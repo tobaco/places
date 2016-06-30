@@ -1,6 +1,6 @@
-/* eslint-env jest */
+/* eslint-env jest, jasmine */
 
-jest.unmock('./formatInputValue');
+jest.unmock('./formatInputValue.js');
 import formatInputValue from './formatInputValue.js';
 
 describe('formatInputValue', () => {
@@ -13,14 +13,14 @@ describe('formatInputValue', () => {
       name: '88 rue de Rivoli',
       type: 'address'
     },
-    output: '88 rue de Rivoli, Paris, Île-de-France, France'
+    expected: '88 rue de Rivoli, Paris, Île-de-France, France'
   }, {
     name: 'country',
     input: {
       name: 'France',
       type: 'country'
     },
-    output: 'France'
+    expected: 'France'
   }, {
     name: 'no city',
     input: {
@@ -29,7 +29,7 @@ describe('formatInputValue', () => {
       name: '88 rue de Rivoli',
       type: 'address'
     },
-    output: '88 rue de Rivoli, Île-de-France, France'
+    expected: '88 rue de Rivoli, Île-de-France, France'
   }, {
     name: 'no administrative',
     input: {
@@ -37,19 +37,19 @@ describe('formatInputValue', () => {
       name: '88 rue de Rivoli',
       type: 'address'
     },
-    output: '88 rue de Rivoli, France'
+    expected: '88 rue de Rivoli, France'
   }, {
     name: 'no country',
     input: {
       name: '88 rue de Rivoli',
       type: 'address'
     },
-    output: '88 rue de Rivoli'
+    expected: '88 rue de Rivoli'
   }];
 
   testCases.forEach(
     testCase => it(`${testCase.name} test case`, () =>
-      expect(formatInputValue(testCase.input)).toEqual(testCase.output)
+      expect(formatInputValue(testCase.input)).toEqual(testCase.expected)
     )
   );
 });

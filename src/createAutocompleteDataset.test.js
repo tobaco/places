@@ -1,10 +1,11 @@
-/* eslint-env jest */
+/* eslint-env jest, jasmine */
+
 import createAutocompleteDataset from './createAutocompleteDataset.js';
 import createAutocompleteSource from './createAutocompleteSource.js';
 
-jest.unmock('./createAutocompleteDataset');
-jest.mock('./defaultTemplates', () => ({template: 'test', value: 'test'}));
-jest.mock('./createAutocompleteSource', () => jest.fn(() => 'source'));
+jest.unmock('./createAutocompleteDataset.js');
+jest.mock('./defaultTemplates.js', () => ({template: 'test', value: 'test'}));
+jest.mock('./createAutocompleteSource.js', () => jest.fn(() => 'source'));
 
 describe('createAutocompleteDataset', () => {
   let dataset;
